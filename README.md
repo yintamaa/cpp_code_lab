@@ -1,2 +1,2 @@
 # C-code-lab
-t
+it is just a C++ code lab
