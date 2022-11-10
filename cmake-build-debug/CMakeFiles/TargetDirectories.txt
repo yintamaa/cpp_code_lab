@@ -1,0 +1,3 @@
+/data/bitsetli/2022-10/cppTest/cmake-build-debug/CMakeFiles/cppTest.dir
+/data/bitsetli/2022-10/cppTest/cmake-build-debug/CMakeFiles/edit_cache.dir
+/data/bitsetli/2022-10/cppTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
