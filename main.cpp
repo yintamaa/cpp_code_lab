@@ -28,6 +28,9 @@ void go() {
 
 
 int main() {
+
+    const int &a = 10;
+
     std::thread thread[10];
     for (int i = 0; i < 10; i++) {
         thread[i] = std::thread(do_print_id, i);
