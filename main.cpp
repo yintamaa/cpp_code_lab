@@ -26,18 +26,24 @@ void go() {
     cond.notify_all();
 }
 
+void smartPointer() {
+    std::shared_ptr<int> a(new int(10));
+    std::cout<<a.get()<<std::endl;
+
+}
 
 int main() {
-
-    const int &a = 10;
-
-    std::thread thread[10];
-    for (int i = 0; i < 10; i++) {
-        thread[i] = std::thread(do_print_id, i);
-    }
-    for (auto &th:thread) {
-        th.join();
-    }
-
-    go();
+    smartPointer();
+//    const int &a = 10;
+//
+//    std::thread thread[10];
+//    for (int i = 0; i < 10; i++) {
+//        thread[i] = std::thread(do_print_id, i);
+//    }
+//    for (auto &th:thread) {
+//        th.join();
+//    }
+//
+//    go();
 }
+
