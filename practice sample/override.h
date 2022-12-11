@@ -13,7 +13,7 @@ public:
     overRideFather& operator= (const overRideFather&) = delete;
 
     virtual void FatherFirst(int val) = 0;
-    
+
 private:
     int val_;
 };

@@ -4,6 +4,22 @@
 
 #include "linuxIO.h"
 
+// 返回监听套接字
+int buildSocket(char* ip, int port) {
+    int serverLen, clientLen;
+    sockaddr_in serverAddr;
+    sockaddr_in clientAddr;
+
+    serverAddr.sin_family = AF_INET; // TCP/IP IPV4
+    inet_pton(AF_INET, ip, &serverAddr.sin_addr);
+    serverAddr.sin_port = htons(port);
+    int listenFD = socket(AF_INET, SOCK_STREAM, 0); // 流式套接字,IPV4,TCP
+    assert(listenFD > 0);
+    int ret = bind(listenFD, (struct sockaddr*)&serverAddr, sizeof serverAddr);
+    assert(ret == 0);
+    return listenFD;
+}
+
 void linuxIO::epoll_add_fd(int epoll_fd, int fd, bool is_et) {
     epoll_event event;
     event.data.fd = fd;
@@ -37,13 +53,17 @@ void linuxIO::epoll(bool is_et) {
     close(listenFD);
 }
 
+void linuxIO::epoll_LT_handler() {
+
+}
+
 void linuxIO::epoll_ET_handler(struct epoll_event* events, int event_nums, int epoll_fd, int listen_fd) {
     for(int i = 0; i < event_nums; ++i) {
         int sockFD = events[i].data.fd;
         if(sockFD == listen_fd) { // 监听感知到新的连接
             sockaddr_in client_address;
             socklen_t client_addr_length = sizeof(client_address);
-            int connfd = accept(listen_fd, (struct sockaddr*)&client_address, &client_addr_length));
+            int connfd = accept(listen_fd, (struct sockaddr*)&client_address, &client_addr_length);
             while(connfd > 0) { // 获取连接请求队列的第一个连接请求
                 printf("链接建立，Client : %s\n",inet_ntoa(client_address.sin_addr));
                 epoll_add_fd(epoll_set_fd, connfd, true);
@@ -58,4 +78,10 @@ void linuxIO::epoll_ET_handler(struct epoll_event* events, int event_nums, int e
 
 void linuxIO::receive() {
 
+}
+
+// 设置w
+int linuxIO::SetNonblocking(int fd) {
+    // fcntl(fd, F_GETFL) 获取旧的文件描述符标志
+    return fcntl(fd, F_SETFL, fcntl(fd, F_GETFL)|O_NONBLOCK);
 }
