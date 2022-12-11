@@ -7,10 +7,13 @@
 #include <condition_variable>
 #include <iostream>
 #include <thread>
+#include "practice sample/class_function.h"
 
 std::mutex mtx;
 std::condition_variable cond;
 bool ready = false;
+
+int dir[][2] = { {1,0}, {0,1}, {-1,0}, {0,-1}  };
 
 void do_print_id(int id) {
     std::unique_lock<std::mutex>lck(mtx);
@@ -32,8 +35,15 @@ void smartPointer() {
 
 }
 
+union xxx {
+    int a;
+    double b;
+} t;
+
 int main() {
-    smartPointer();
+    test();
+//    std::cout << t.a << std::endl;
+//    smartPointer();
 //    const int &a = 10;
 //
 //    std::thread thread[10];
