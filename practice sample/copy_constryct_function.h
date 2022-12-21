@@ -2,8 +2,8 @@
 // Created by root on 12/12/22.
 //
 
-#ifndef CPPTEST_CLASS_FUNCTION_H
-#define CPPTEST_CLASS_FUNCTION_H
+#ifndef CPPTEST_COPY_CONSTRYCT_FUNCTION_H
+#define CPPTEST_COPY_CONSTRYCT_FUNCTION_H
 
 #include <iostream>
 
@@ -60,4 +60,4 @@ void test() {
     return ;
 }
 
-#endif //CPPTEST_CLASS_FUNCTION_H
+#endif //CPPTEST_COPY_CONSTRYCT_FUNCTION_H
