@@ -70,7 +70,20 @@ public:
     }
 };
 
+std::unordered_map<int, std::vector<std::string> >mp;
+
+int get(std::string* value) {
+    mp[1].emplace_back("123");
+    mp[2].emplace_back("456");
+    mp[3].emplace_back("789");
+    mp[1].emplace_back("xqr");
+    *value = mp[1].back();
+}
+
 int main() {
+    std::string value;
+    get(&value);
+    std::cout<< value << std::endl;
     // INPUT：1 2 3 2 1     OUTPUT: Retmsg{SUCCESS};
     // INPUT: 1 2 3 3 2 1  OUTPUT: Retmsg{SUCCESS};
     // INPUT: 1            OUTPUT: Retmsg{SUCCESS};
