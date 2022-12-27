@@ -34,7 +34,7 @@ public:
 			return *this;
 		} else {
 			if (this -> ptr_) {
-				(*this)->count_--;
+//				(*this)->count_--; // template导致编译器提示失效
 				(*this->count_) --;
 				if (*this -> count_ == 0) {
 					delete this -> ptr_;
@@ -47,6 +47,24 @@ public:
 		(*this -> count_)++;
 		return *this;
 	}
+    T& operator * () {
+        assert(this -> ptr == nullptr);
+        return *(this -> ptr);
+    }
+    T* operator -> () {
+        assert(this -> ptr == nullptr);
+        return this -> ptr;
+    }
+    ~SmartPointerBuilder() {
+        (*this -> count_) --;
+        if (*this -> count_ == 0) {
+            delete this -> ptr;
+            delete this -> count_;
+        }
+    }
+    size_t UseCount() {
+        return *this -> count_;
+    }
 };
 
 class SmartPointer {

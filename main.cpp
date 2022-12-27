@@ -84,6 +84,16 @@ struct node {
   	int val;
 };
 
+template <typename T>
+class test {
+public:
+    T* ptr;
+    int* count_;
+    test() {
+        (*this) -> count_ = new int(10);
+    }
+};
+
 int main() {
 	node * a = new node();
 	a->val;
