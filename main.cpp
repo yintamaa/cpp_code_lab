@@ -80,7 +80,15 @@ int get(std::string* value) {
     *value = mp[1].back();
 }
 
+struct node {
+  	int val;
+};
+
 int main() {
+	node * a = new node();
+	a->val;
+	node b;
+	b.val;
     std::string value;
     get(&value);
     std::cout<< value << std::endl;
