@@ -85,6 +85,16 @@ struct node {
   	int val;
 };
 
+template <typename T>
+class test {
+public:
+    T* ptr;
+    int* count_;
+    test() {
+        (*this) -> count_ = new int(10);
+    }
+};
+
 int main() {
 	StaticClass xx(10);
 	xx.print();
