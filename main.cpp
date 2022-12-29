@@ -25,6 +25,7 @@ example:
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include "practice sample/static.h"
 
 constexpr int LOOP_LIST = -1;
 constexpr int IS_NOT_SYM = -2;
@@ -85,6 +86,11 @@ struct node {
 };
 
 int main() {
+	StaticClass xx(10);
+	xx.print();
+	StaticClass yy = 20;
+	yy.print();
+	xx.print();
 	node * a = new node();
 	a->val;
 	node b;
